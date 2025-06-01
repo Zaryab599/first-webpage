@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My  Madam G</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .moon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: 
+                radial-gradient(circle at 30% 30%, 
+                    #f0f8ff 0%, 
+                    #e0e0ff 10%, 
+                    #c0c0ff 20%, 
+                    #a0a0ff 40%, 
+                    #8080ff 70%);
+            box-shadow: 
+                0 0 60px rgba(100, 149, 237, 0.7),
+                inset -10px -10px 20px rgba(0, 0, 0, 0.2),
+                inset 10px 10px 20px rgba(255, 255, 255, 0.3);
+            z-index: 1;
+            animation: moonGlow 4s infinite alternate;
+        }
+
+        @keyframes moonGlow {
+            0% {
+                box-shadow: 
+                    0 0 50px rgba(100, 149, 237, 0.6),
+                    inset -10px -10px 20px rgba(0, 0, 0, 0.2),
+                    inset 10px 10px 20px rgba(255, 255, 255, 0.3);
+            }
+            100% {
+                box-shadow: 
+                    0 0 80px rgba(100, 149, 237, 0.9),
+                    inset -10px -10px 20px rgba(0, 0, 0, 0.2),
+                    inset 10px 10px 20px rgba(255, 255, 255, 0.4);
+            }
+        }
+
+        .moon::before, .moon::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .moon::before {
+            width: 15px;
+            height: 15px;
+            top: 30px;
+            left: 30px;
+            box-shadow: 
+                40px 20px 0 -2px rgba(0, 0, 0, 0.1),
+                20px 60px 0 -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .moon::after {
+            width: 20px;
+            height: 20px;
+            top: 60px;
+            left: 50px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #4fc3f7, #64b5f6, #90caf9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #bbbbbb;
+            margin-top: 10px;
+        }
+        
+        .flower-transition {
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            margin: 30px auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .flower {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            padding-bottom: 30px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .flower.active {
+            opacity: 1;
+        }
+        
+        .flower-1 {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), 
+                        url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+        
+        .flower-2 {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), 
+                        url('https://images.unsplash.com/photo-1518481852452-9415b262eba4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+        
+        .flower-3 {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), 
+                        url('https://images.unsplash.com/photo-1533038590840-1cde6e668a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .section {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(25, 30, 50, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 149, 237, 0.2);
+        }
+        
+        .section-title {
+            color: #64b5f6;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #4fc3f7, #64b5f6, #90caf9);
+            border-radius: 3px;
+        }
+        
+       .photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(100, 149, 237, 0.5);
+    box-shadow: 0 0 30px rgba(100, 149, 237, 0.4);
+}
+      
+        
+        .voice-recorder {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .record-btn {
+            background: linear-gradient(to right, #e91e63, #f44336);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+        }
+        
+        .record-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.6);
+        }
+        
+        .record-btn.recording {
+            animation: pulse 1.5s infinite;
+        }
+        
+        .audio-player {
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        .apology-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            text-align: justify;
+        }
+        
+        .highlight {
+            color: #64b5f6;
+            font-weight: bold;
+        }
+        
+        .memory-section {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(100, 149, 237, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #64b5f6;
+        }
+        
+        .memory-title {
+            color: #64b5f6;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .response-section {
+            text-align: center;
+        }
+        
+        .response-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .response-btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .accept-btn {
+            background: linear-gradient(to right, #4caf50, #8bc34a);
+            color: white;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+        
+        .reject-btn {
+            background: linear-gradient(to right, #f44336, #ff9800);
+            color: white;
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
+        }
+        
+        .response-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .feelings-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(233, 30, 99, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid #e91e63;
+        }
+        
+        .feelings-title {
+            color: #e91e63;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #bbbbbb;
+            font-size: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .flower-transition {
+                height: 250px;
+            }
+            
+            .content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="moon"></div>
+    
+    <div class="container">
+        <header>
+            <h1>For My  Madam G</h1>
+            <p class="subtitle">Zaryab Kashif, this is for you</p>
+        </header>
+        
+        <div class="flower-transition">
+            <div class="flower flower-1 active">White Roses for New Beginnings</div>
+            <div class="flower flower-2">Red Tulips for Deep Love</div>
+            <div class="flower flower-3">Blue Hydrangeas for Your Favorite Color</div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">My Sincere Apology</h2>
+                
+                <div class="photo-container">
+                    <div class="photo-placeholder">
+                        <img src="madam.jpg.jpg" alt="Zaryab Kashif" class="photo">
+                    </div>
+                </div>
+                
+                <div class="voice-recorder">
+                    <button id="recordButton" class="record-btn">
+                        <i class="fas fa-microphone"></i> Record My Apology
+                    </button>
+                    <div id="audioPlayer" class="audio-player hidden"></div>
+                </div>
+                
+                <div class="apology-text">
+                    <p>My dearest Zaryab,</p>
+                                        <p>I'm writing this with a heavy heart, filled with regret for my behavior. I reacted poorly to your playful teasing, and I'm deeply sorry for being rude to you. You didn't deserve that reaction, especially over such a small misunderstanding.</p>
+                    
+                    <p>You know I've always cherished our moments together, from our laughter to our deep conversations. I value you more than words can express, and seeing you upset because of me breaks my heart.</p>
+                    
+                    <p>Please know that my reaction came from a place of frustration with myself, not with you. You bring so much light into my life, and I hate that I dimmed that light with my behavior.</p>
+                    
+                    <p>I promise to be more patient, more understanding, and more deserving of your wonderful spirit. You mean the world to me, <span class="highlight">Love Madam G</span>.</p>
+                </div>
+                
+                <div class="memory-section">
+                    <h3 class="memory-title">Our Special Memory</h3>
+                    <p>Remember when we go to Sir Nasir and increases our marks of physics lab? I'll never forget how you looked at me one day and said, <span class="highlight">"I was looking good to you"</span>. That was the moment I realized I was feeling something more for you. You were feeliing or not I don't know, even if you weren't ready to admit it.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Your Response</h2>
+                
+                <div class="apology-text">
+                    <p>My dear Zaryab,</p>
+                    
+                    <p>You've always called me your best friend, but my heart holds deeper feelings for you. When you shared that moment with me in physics lab, I saw a connection between us that goes beyond friendship.</p>
+                    
+                    <p>I understand you might not be ready to accept this yet, but I needed to express what's been in my heart. You're not just my best friend - you're the person who makes my days brighter, my laughter more genuine, and my heart fuller.</p>
+                    
+                    <p>No matter what you decide about us, I will always cherish you and our friendship. But I hope someday you might see me as more than just a friend.</p>
+                </div>
+                
+                <div class="feelings-section">
+                    <h3 class="feelings-title">My True Feelings</h3>
+                    <p>Zaryab, every moment with you feels special. Your smile, your intelligence, your beautiful spirit - everything about you captivates me. I've tried to ignore these feelings, but they only grow stronger. I'm not asking for an immediate answer, just hoping you'll consider the possibility of us being more than friends.</p>
+                </div>
+                
+                <div class="response-section">
+                    <p>Please let me know if you can find it in your heart to forgive me:</p>
+                    
+                    <div class="response-options">
+                        <button id="acceptBtn" class="response-btn accept-btn">I Forgive You ❤️</button>
+                        <button id="rejectBtn" class="response-btn reject-btn">I Need More Time</button>
+                    </div>
+                    
+                    <div id="responseMessage" class="hidden">
+                        <h3>Thank you for your response!</h3>
+                        <p id="messageText"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Created with love for Zaryab Kashif (Love Madam G)</p>
+            <p>You're my moon in the darkest night and my sunshine in the day</p>
+        </div>
+    </div>
+    
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.width = `${Math.random() * 3}px`;
+            star.style.height = star.style.width;
+            star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+            starsContainer.appendChild(star);
+        }
+        
+        // Flower transition
+        let currentFlower = 0;
+        const flowers = document.querySelectorAll('.flower');
+        
+        function changeFlower() {
+            flowers[currentFlower].classList.remove('active');
+            currentFlower = (currentFlower + 1) % flowers.length;
+            flowers[currentFlower].classList.add('active');
+        }
+        
+        setInterval(changeFlower, 3000);
+        
+        // Voice recording simulation
+        const recordButton = document.getElementById('recordButton');
+        const audioPlayer = document.getElementById('audioPlayer');
+        let isRecording = false;
+        
+        recordButton.addEventListener('click', function() {
+            if (!isRecording) {
+                // Start "recording"
+                isRecording = true;
+                recordButton.classList.add('recording');
+                recordButton.innerHTML = '<i class="fas fa-circle"></i> Recording... Click to Stop';
+                
+                // Simulate recording process
+                setTimeout(function() {
+                    isRecording = false;
+                    recordButton.classList.remove('recording');
+                    recordButton.innerHTML = '<i class="fas fa-microphone"></i> Record My Apology';
+                    
+                    // Show audio player
+                    audioPlayer.classList.remove('hidden');
+                    audioPlayer.innerHTML = `
+                        <p>Recording complete! Here's my message:</p>
+                        <audio controls style="width: 100%; margin-top: 15px;">
+                            <source src="#" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <p style="margin-top: 10px; font-style: italic;">(In a real implementation, this would play your recorded voice)</p>
+                    `;
+                }, 3000);
+            }
+        });
+        
+        // Response handling
+        const acceptBtn = document.getElementById('acceptBtn');
+        const rejectBtn = document.getElementById('rejectBtn');
+        const responseMessage = document.getElementById('responseMessage');
+        const messageText = document.getElementById('messageText');
+        
+        acceptBtn.addEventListener('click', function() {
+            responseMessage.classList.remove('hidden');
+            messageText.innerHTML = "You've made me the happiest person! I promise to be better and cherish you always. ❤️";
+            this.style.transform = "scale(1.1)";
+            setTimeout(() => { this.style.transform = "scale(1)"; }, 300);
+        });
+        
+        rejectBtn.addEventListener('click', function() {
+            responseMessage.classList.remove('hidden');
+            messageText.innerHTML = "I understand you need more time. I'll be patient and continue to show you how much you mean to me. 💙";
+            this.style.transform = "scale(1.1)";
+            setTimeout(() => { this.style.transform = "scale(1)"; }, 300);
+        });
+        
+        // Initial animations
+        document.querySelectorAll('.section').forEach((section, index) => {
+            section.style.animation = `fadeIn 1s ease-out ${index * 0.3}s forwards`;
+            section.style.opacity = "0";
+        });
+    </script>
+</body>
+</html>
+
+                    
